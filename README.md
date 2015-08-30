@@ -1,5 +1,6 @@
-# analyzing-the-new-york-subway-dataset
+# Analyzing and Drawing Conclusions from NYC Subway Ridership Data
 
-This project was completed for Udacity course.
+(This project was completed for a Udacity course.)
 
-Specifically, the project entailed exploring a dataset containg NYC subway ridership. Data 
+This project entailed exploring a NYC subway ridership dataset as a means of answering the following questino: "Does rain increase subway ridership?". 
+
