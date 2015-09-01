@@ -3,29 +3,48 @@
 Note: This project was completed for a Udacity course. The PDF of the writeup for Udacity is contained in the folder above. The information contained in this README contains the context needed for those unfamiliar with the supporting Udacity course.
 
 ## Introduction and Data
-I explored a NYC subway ridership dataset as a means of answering the following question: 
+Given that this project was to satisfy a course requirement, my project was required to answer the following question:
 
-*Does rain increase subway ridership?* 
+* *Does rain increase subway ridership?* 
 
-The dataset was collect over the month of May 2011. Variables include day, time, subway data (subway station, number of riders entering a given station), and weather data from Weather Underground (rain, temperature, wind, and other weather factors). 
-See [this Dropbox link](https://www.dropbox.com/s/meyki2wl9xfa7yk/turnstile_data_master_with_weather.csv) to download the data set.
+However, there are numerous other questions one could explore with this dataset:
+* What times are day are most busiest?
+* Is there a difference between weekday and weekend ridership?
+* What are the most and least used subway stops?
+* Do other factors have an effect on ridership?
+
+The dataset is limited to data from May 2011. Variables include day, time, subway data (subway station, number of riders entering a given station), and weather data from Weather Underground (rain, temperature, wind, and other weather factors). 
+See [this Dropbox link](https://www.dropbox.com/s/meyki2wl9xfa7yk/turnstile_data_master_with_weather.csv) to download the data set. 
 
 ## Methods
-The first question I asked is whether the distribution of ridership under rainy conditions is any different than the distribution of ridership undery dry conditions. I first segmented my data on the binary variable "rain". After plotting the histograms of ridership under both conditions, it is clear that the data does not follow a Normal distribution, and thus we cannot use parametric tests to
 
-We first set up  
+### Hypothesis Testing
+*****
+First, I wanted to see if ridership on rainy days follows a different distiribution than ridership on dry days. I split the data based on the "rain" binary variable, and plotted a historgram of ridership for each sample. Because the histograms do not appear to follow a normal distribution (which is supported by five number summary stats), we must use a non-parametric test to examine whether these two samples come from the same distribution. To do this, I used the [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann–Whitney_U_test) using the SciPy library.
 
-In doing this, we look to set up a Null Hypotheses that these two sample come from the same distribution. 
+/// Makes n assumptions about underlying distribution of data
 
-Using the Mann-Whitney U test 
+The resutls are as follows
 
+Using a critical value of 0.05, we reject the null hypothesis that these two samples come from the same distribution. 
+
+Other summary data seems to align 
+
+### Estimated Effects of Rain
+
+Given rain does appear to change ridership on a stati
 
 Given that we have established that the distributions are statistically different, we now must look to find what effect rain may be having on ridership. To examine the effects of rain, I built a regression model using gradient descent and a model using the `statsmodel` module API for ordinary least square (OLS). 
 
 As expected, these models produced similar results. 
 
+
+Given that are we seeing a statistically significant difference in the distributions of the two samples, I looked to estimate how much of a difference the presence of rain actually makes on ridership. To do this, I tested various linear regression models to estimate ridership. The best model achieved an R^2 of 0.4783. 
+
+To check for multicollinearity, I removed variables I suspected to be correlated (e.g., "rain" and "precipi", the amount of precipitation). Also, to test for significance of the variable in the model, I 
+
 ## Conclusions
-Understanding data goes hand in hand with storytelling. Our initial hypothesis was that when there is rain, people prefer to take the subway (who likes getting caught in the rain?). However, based on the results of our regression, we see that the coefficient for rain is very small in comparison to other factors, meaning that the presence or lack of rain has small effects on ridership relative to other factors. 
+Understanding data goes hand in hand with storytelling. Our initial hypothesis on the situation was that when there is rain, people prefer to take the subway (who likes getting caught in the rain?). However, based on the results of our regression, we see that the coefficient for rain is very small in comparison to other factors, meaning that the presence or lack of rain has small effects on ridership relative to other factors. 
 
 Questions about data must fit within a story. 
 
