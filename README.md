@@ -2,25 +2,24 @@
 
 Note: This project was completed for a Udacity course. The PDF of the writeup for Udacity is contained in the folder above. The information contained in this README contains the context needed for those unfamiliar with the supporting Udacity course.
 
-## Introduction and Data
-Given that this project was to satisfy a course requirement, my project was required to answer the following question:
+## Objective
+As part of the Udacity course, I was asked to use this dataset to do an analysis and writeup on the following question:
 
 * *Does rain increase subway ridership?* 
 
 However, there are numerous other questions one could explore with this dataset:
-* What times are day are most busiest?
+* What times of day are the busiest?
 * Is there a difference between weekday and weekend ridership?
 * What are the most and least used subway stops?
 * Do other factors have an effect on ridership?
 
-The dataset is limited to data from May 2011. Variables include day, time, subway data (subway station, number of riders entering a given station), and weather data from Weather Underground (rain, temperature, wind, and other weather factors). 
-See [this Dropbox link](https://www.dropbox.com/s/meyki2wl9xfa7yk/turnstile_data_master_with_weather.csv) to download the data set. 
+## Data
+The dataset comes from the NYC MTA. The raw data can be found on the MTA website here. (See these python files). The final clean csv file used for analaysis can be found at [this Dropbox link](https://www.dropbox.com/s/meyki2wl9xfa7yk/turnstile_data_master_with_weather.csv). 
 
-## Methods
+The dataset is limited to data from May 2011. Variables include day, time, subway data (subway station, number of riders entering a given station), and weather data from Weather Underground (rain, temperature, wind, and other weather factors
 
 ### Hypothesis Testing
-*****
-First, I wanted to see if ridership on rainy days follows a different distiribution than ridership on dry days. I split the data based on the "rain" binary variable, and plotted a historgram of ridership for each sample. Because the histograms do not appear to follow a normal distribution (which is supported by five number summary stats), we must use a non-parametric test to examine whether these two samples come from the same distribution. To do this, I used the [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann–Whitney_U_test) using the SciPy library.
+First, I wanted to see if ridership on rainy days follows a different distiribution than ridership on dry days. I split the data based on the "rain" binary variable, and plotted a historgram of ridership for each sample. I examined the dsitused a must use a non-parametric test to examine whether these two samples come from the same distribution. To do this, I used the [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann–Whitney_U_test) using the SciPy library.
 
 /// Makes n assumptions about underlying distribution of data
 
@@ -29,6 +28,8 @@ The resutls are as follows
 Using a critical value of 0.05, we reject the null hypothesis that these two samples come from the same distribution. 
 
 Other summary data seems to align 
+
+
 
 ### Estimated Effects of Rain
 
