@@ -1,13 +1,16 @@
 # Analyzing and Drawing Conclusions from NYC Subway Ridership Data
 
-Note: This project was completed for a Udacity course. The PDF of the writeup for Udacity is contained in the folder above. The information contained in this README contains the context needed for those unfamiliar with the supporting Udacity course.
+# Executive Summary 
+I analyzed data from the MTA on NYC subway ridership to test if more people ride the subway system on rainy days than dry days. Using statistical tests and graphic summaries, I conclude that while the distributions of ridership are different at statistically significant level (critical value of 0.05), the differences are very slight and do not make an appreciable difference on the subway system as a whole. It is worth noting that almost every other non-weather factor has a much stronger effect on ridership (e.g. location, time of day, etc.). Further segmenting of the data may be useful to test if specific stations are more affected by rain than others. 
 
 ## Objective
-As part of the Udacity course, I was asked to use this dataset to do an analysis and writeup on the following question:
+Note: This project was completed for a Udacity course. The PDF of the writeup for Udacity is contained in the folder above. The information contained in this README contains the context needed for those unfamiliar with the supporting Udacity course.   
+
+As part of the Udacity course, I was asked to use this dataset to perform an analysis and writeup on the following question:
 
 * *Does rain increase subway ridership?* 
 
-However, there are numerous other questions one could explore with this dataset:
+While not examined in this , there are a significant number of other questions one could explore with this dataset. Some examples:
 * What times of day are the busiest?
 * Is there a difference between weekday and weekend ridership?
 * What are the most and least used subway stops?
@@ -19,7 +22,7 @@ The dataset comes from the NYC MTA. The raw data can be found on the MTA website
 The dataset is limited to data from May 2011. Variables include day, time, subway data (subway station, number of riders entering a given station), and weather data from Weather Underground (rain, temperature, wind, and other weather factors
 
 ### Hypothesis Testing
-First, I wanted to see if ridership on rainy days follows a different distiribution than ridership on dry days. I split the data based on the "rain" binary variable, and plotted a historgram of ridership for each sample. I examined the dsitused a must use a non-parametric test to examine whether these two samples come from the same distribution. To do this, I used the [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann–Whitney_U_test) using the SciPy library.
+First, I wanted to see if ridership on rainy days follows a different distiribution than ridership on dry days. I split the data based on the "rain" binary variable, and plotted a historgram of ridership for each sample.  I examined the dsitused a must use a non-parametric test to examine whether these two samples come from the same distribution. To do this, I used the [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann–Whitney_U_test) using the SciPy library.
 
 /// Makes n assumptions about underlying distribution of data
 
@@ -55,5 +58,5 @@ Questions about data must fit within a story.
 * Structure of Analysis: The challenge with performing the analysis as given is that we are looking to predict subway ridership across the 
 *
 
-In our data set, 
+
 
