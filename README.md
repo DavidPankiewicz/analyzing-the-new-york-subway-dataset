@@ -16,16 +16,21 @@ While not examined in this analysis , there are a significant number of other qu
 * Do other factors have an effect on ridership?
 
 ## Data
-The dataset comes from the NYC MTA. The raw data can be found on the MTA website here. (See these python files). The final clean csv file used for analysis can be found at [this Dropbox link](https://www.dropbox.com/s/meyki2wl9xfa7yk/turnstile_data_master_with_weather.csv). 
+The dataset comes from the NYC MTA. The raw data can be found on the MTA website here. An example file is uploaded at. The final clean csv file used for analysis can be found at [this Dropbox link](https://www.dropbox.com/s/meyki2wl9xfa7yk/turnstile_data_master_with_weather.csv). 
 
 The dataset is limited to data collected from May 2011. Variables include day, time, subway data (subway station, number of riders entering a given station), and weather data from Weather Underground (rain, temperature, wind, and other weather factors).
 
 ## Hypothesis Testing
 First, I wanted to see if ridership on rainy days follows a different distribution than ridership on dry days. I split the data based on the "rain" binary variable, and plotted a histogram of ridership for each sample. The histograms make it clear that ridership does not follow a normal distribution, ruling out the possibility of using a t-test to examine means.  Instead, I used the [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann–Whitney_U_test), a non-parametric test that makes no assumptions about the underlying distribution of the data. Using the SciPy library, 
 
-Running the following code using the SciPy library, we get the following results
+Running the following code using the SciPy library, I got the following results:
 
-Using a critical value of 0.05, we reject the null hypothesis that these two distributions are equal. 
+Rain Day Mean: 1105.45
+Dry Day Mean:  1090.28
+1 sided p-value: 0.02499
+2 sided p-value: 0.04998
+
+Using a critical value of 0.05, we reject the null hypothesis that these two distributions are equal. It is noted that our p-value is only ever so slightly below 0.05. 
 
 ## Estimated Effects of Rain
 
