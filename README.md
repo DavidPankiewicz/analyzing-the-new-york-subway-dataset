@@ -7,7 +7,7 @@ I analyzed data from the MTA on NYC subway ridership to test if more people ride
 Note: This project was completed for a Udacity course. The PDF of the writeup for Udacity is contained in the folder above. The information contained in this README contains the context needed for those unfamiliar with the supporting Udacity course.   
 
 As part of the Udacity course, I was asked to use this dataset to perform an analysis and writeup on the following question:
-* *Does rain increase subway ridership?* 
+* Does rain increase subway ridership? 
 
 While not examined in this analysis , there are a significant number of other questions one could explore with this dataset. Some examples:
 * What times of day are the busiest?
@@ -16,29 +16,27 @@ While not examined in this analysis , there are a significant number of other qu
 * Do other factors have an effect on ridership?
 
 ## Data
-The dataset comes from the NYC MTA. The raw data can be found on the MTA website here. An example file is uploaded at. The final clean csv file used for analysis can be found at [this Dropbox link](https://www.dropbox.com/s/meyki2wl9xfa7yk/turnstile_data_master_with_weather.csv). 
+The dataset comes from the NYC MTA. The raw data can be found on the [MTA website here](http://web.mta.info/developers/turnstile.html). An example file is uploaded (`turnstile_110507.txt`). The final clean csv file used for analysis can be found at [this Dropbox link](https://www.dropbox.com/s/meyki2wl9xfa7yk/turnstile_data_master_with_weather.csv). 
 
 The dataset is limited to data collected from May 2011. Variables include day, time, subway data (subway station, number of riders entering a given station), and weather data from Weather Underground (rain, temperature, wind, and other weather factors).
 
 ## Hypothesis Testing
-First, I wanted to see if ridership on rainy days follows a different distribution than ridership on dry days. I split the data based on the "rain" binary variable, and plotted a histogram of ridership for each sample. The histograms make it clear that ridership does not follow a normal distribution, ruling out the possibility of using a t-test to examine means.  Instead, I used the [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann–Whitney_U_test), a non-parametric test that makes no assumptions about the underlying distribution of the data. Using the SciPy library, 
+First, I wanted to see if ridership on rainy days follows a different distribution than ridership on dry days. I split the data based on the "rain" binary variable, and plotted a histogram of ridership for each sample. The histograms make it clear that ridership does not follow a normal distribution, ruling out the possibility of using a t-test to examine means.  Instead, I used the [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann–Whitney_U_test), a non-parametric test that makes no assumptions about the underlying distribution of the data. Using the SciPy library, I recevied the following results:
 
-Running the following code using the SciPy library, I got the following results:
-
-Rain Day Mean: 1105.45
-Dry Day Mean:  1090.28
-1 sided p-value: 0.02499
-2 sided p-value: 0.04998
+Rain Day Mean: 1105.45  
+Dry Day Mean:  1090.28  
+1 sided p-value: 0.02499  
+2 sided p-value: 0.04998  
 
 Using a critical value of 0.05, we reject the null hypothesis that these two distributions are equal. It is noted that our p-value is only ever so slightly below 0.05. 
 
 ## Estimated Effects of Rain
 
-Given that the distributions are different at a 0.05 critical value, I wanted to find out how much effect rain may be having on ridership. To do this, I built a linear regression with the data I had to model ridership. 
+Given that the distributions are different at a 0.05 critical value, I wanted to find out how much effect rain may be having on ridership. To do this, I built a linear regression with the data I had to model ridership. My best model achieved an R^2 of 0.4783. 
 
-Given that we are seeing a statistically significant difference in the distributions of the two samples, I looked to estimate how much of a difference the presence of rain actually makes on ridership. To do this, I tested various linear regression models to estimate ridership. The best model achieved an R^2 of 0.4783. 
+Looking at the results of my regression, rain had a statistically significant beta coefficient of 6.6 with a 95% confidence interval greater than zero. This would mean that when holding all other factors constant, the presence of rain increases ridership by 6.6 people on average. This is a mucher smaller effect than expected. It's noted that most other non-weather factors had much higher beta coefficients. 
 
-To check for multicollinearity, I removed variables I suspected to be correlated (e.g., "rain" and "precipi", the amount of precipitation). 
+To check for multicollinearity, I removed variables I suspected to be correlated (e.g., "rain" and "precipi", the amount of precipitation). This proved to have little efffect on my model. 
 
 ## Conclusions: Translating this Analysis to the Real World
 An analysis of data must fit into context and a story. Our initial hypothesis (or story) is a situation where rain would cause people to take the subway who would otherwise be walking. However, based on the results of our regression, we see that the coefficient for rain is very small in comparison to other factors, meaning that the presence or lack of rain explains a tiny portion of variation in ridership compared to other factors. In other words, rain has little net effect on ridership. Reconsidering our story, this makes sense. Most New Yorkers take the subway as part of their normal routine regardless of the weather. Additionally, it would have to be raining very heavily for someone who would otherwise normally walk to instead pay and take the subway. Finally, while it seems there would be an increase in some people riding the subway because it's raining, some people may decide to stay home altogether if it's raining heavily enough, negating increased ridership. 
