@@ -4,7 +4,7 @@
 I analyzed data from the MTA on NYC subway ridership to test if more people ride the subway system on rainy days than dry days. Using statistical tests and graphic summaries, I conclude that while the distributions of ridership are different on a  statistically significant level (critical value of 0.05), the differences are very slight and do not make an appreciable difference on the subway system as a whole. It is worth noting that almost every other non-weather factor has a much stronger effect on ridership (e.g. location, time of day, etc.). Further segmenting of the data may be useful to test if specific stations are more affected by rain than others. 
 
 ## Objective
-Note: This project was completed for a Udacity course. For the PDF of the writeup for Udacity [click here](https://github.com/DavidPankiewicz/analyzing-the-new-york-subway-dataset/blob/master/David%20Pankiewicz%20-%20Analyzing%20the%20NYC%20Subway%20Dataset/David%20Pankiewicz%20-%20Analyzing%20the%20NYC%20Subway%20Dataset.pdf). The information contained in this README contains the context needed for those unfamiliar with the supporting Udacity course.   
+Note: This project was completed for a Udacity course. The information contained in this README contains the context needed for those unfamiliar with the supporting Udacity course. For the PDF of the writeup for Udacity [click here](https://github.com/DavidPankiewicz/analyzing-the-new-york-subway-dataset/blob/master/David%20Pankiewicz%20-%20Analyzing%20the%20NYC%20Subway%20Dataset/David%20Pankiewicz%20-%20Analyzing%20the%20NYC%20Subway%20Dataset.pdf). 
 
 As part of the Udacity course, I was asked to use this dataset to perform an analysis and writeup on the following question:
 * Does rain increase subway ridership? 
